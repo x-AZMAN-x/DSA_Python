@@ -26,7 +26,7 @@ print(my_set)
 
 my_set.discard(10)
 print(my_set)
-
+    
 popped = my_set.pop()
 print(f"Popped Element: {popped}")
 
