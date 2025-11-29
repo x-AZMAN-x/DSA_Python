@@ -11,3 +11,5 @@ def onesAndzeroes(n):
     return f"Total Ones = {count0}, And Total Zeroes = {count1}"
 
 print(onesAndzeroes(int(input("Enter A Number: "))))
+
+#ACP = 1-20 Binary Conversion (MEMORISE)
