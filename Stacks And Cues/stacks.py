@@ -2,7 +2,7 @@ class Stack:
     """Array-Based Implementation"""
     def __init__(self, capacity = 10):
         self.items = [None] * capacity
-        self.top = -1
+        self.top = -1 
         self.capacity = capacity
 
     def push(self, value):
