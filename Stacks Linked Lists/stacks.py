@@ -29,7 +29,6 @@ class Stack:
         # Move head to the new node
         self.head = new_node
 
-
     # Function to return the top element without removing it
     def topElement(self):
         """Returns The Top Element Without Removing It. Returns None If Stack Is Empty"""
