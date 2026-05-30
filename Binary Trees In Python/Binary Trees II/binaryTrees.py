@@ -115,7 +115,7 @@ class BinaryTree:
 
     # Display 
     # Prints The Tree Level By Level So You Can See Its Shape
-    def disply(self):
+    def display(self):
         if self.root is None:
             print("Tree Is Empty.")
             return
@@ -125,3 +125,42 @@ class BinaryTree:
         while queue:
             level_size = len(queue)
             print(f"Level {level}: ", end= "")
+
+            for _ in range(level_size):
+                node = queue.pop(0)
+                print(node.data, end = " ")
+
+                if node.left:
+                    queue.append(node.left)
+                if node.right:
+                    queue.append(node.right)
+            print()          # A New Line After Each Level
+            level += 1
+
+# Demo
+if __name__ == "__main__":
+    tree = BinaryTree()
+
+    # Insert Values
+    print("Inserting: 1, 2, 3, 4, 5, 6, 7")
+    for value in [1, 2, 3, 4, 5, 6, 7]:
+        tree.insert(value)
+
+    print("\nTree After Inserting: ")
+    tree.display()
+
+    # Search
+    print("\nSearching For 5...")
+    print("\n",tree.search(5))
+
+    print("\nSearching For 9...")
+    print("\n",tree.search(9))
+
+    # Delete
+    print("\nDeleting '2'...")
+    tree.delete(2)
+    print("\nTree After Deleting '2':")
+    tree.display()
+
+    print("\nDeleting '10'...")
+    tree.delete(10)
