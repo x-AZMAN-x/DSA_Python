@@ -16,52 +16,51 @@ class BinaryTree:
     # Insert
     # Adds A New Value To The Tree
     # Strategy: It Scans Level By Level (Left To Right) And Places The Node In The First Empty Spot Found. This Keeps The Tree Complete And Balanced.
-    def insert(self,data):
+    def insert(self, data):
         new_node = Node(data)
-    
-        # If Tree Is Emoty, New Node Becomes The Root
+
         if self.root is None:
             self.root = new_node
             return
-        
-        # Use A Queue To Scan Level By Level
+
         queue = [self.root]
 
         while queue:
-            current = queue.pop[0]          # Take The Front Node
+            current = queue.pop(0)
 
-        # Try To Attach The Left Child First
-        if current.left is None:
-            current.left = new_node
-            return
-        else:
-            queue.append(current.left)
+            if current.left is None:
+                current.left = new_node
+                return
+            else:
+                queue.append(current.left)
 
-        # Then Try The Right Child
-        if current.right is None:
-            current.right = new_node
-            return
-        else:
-            queue.append(current.right)
+            if current.right is None:
+                current.right = new_node
+                return
+            else:
+                queue.append(current.right)
 
     # Search
     # Looks For A Specific Value Everywhere In The Tree. Scans Every Node Level By Level Until Found. Returns True If Found, False If Not.
     def search(self, target):
         if self.root is None:
             return False
-        
-        queue = self.root
+
+        queue = [self.root]
+
         while queue:
             current = queue.pop(0)
-            if current.data == target:          # Target Found
+
+            if current.data == target:         # Target Found
                 return True
-            
+
             if current.left:
                 queue.append(current.left)
+
             if current.right:
                 queue.append(current.right)
-        
-        return False          # Target Not Found After Checking Every Node
+
+            return False          # Target Not Found After Checking Every Node
     
     # Delete
     # Removes A Value From The Tree.
@@ -77,6 +76,7 @@ class BinaryTree:
                 self.root = None
             else:
                 print(f"{target} Not Found In The Tree.")
+            return
 
         # Scan Level By Level To Find a) The Node Whose Data Matches Target. b) The Deepest Rightmost Node (Last Node Visited).
         target_node = None
@@ -97,8 +97,8 @@ class BinaryTree:
                 last_parent = last_node
                 queue.append(last_node.right)
 
-            if target_node is None:
-                print(f"{target} Not Found In The Tree.")
+        if target_node is None:
+            print(f"{target} Not Found In The Tree.")
 
             # Copy Deepest Node's Value Into The Target's Node
             target_node.data = last_node.data
