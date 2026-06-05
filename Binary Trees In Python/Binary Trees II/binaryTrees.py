@@ -136,7 +136,41 @@ class BinaryTree:
                     queue.append(node.right)
             print()          # A New Line After Each Level
             level += 1
-
+    
+    def countNodes(self):
+        return self._countNodes(self.root)
+    
+    def _countNodes(self, node):
+        if not node: return 0
+        return 1 + self._countNodes(node.left) + self._countNodes(node.right)
+    
+    def height(self):
+        return self._height(self.root)
+    def _height(self, node):
+        if not node: return -1
+        return 1 + max(self.height(node.left), self.height(node.right))
+    
+    def countLeaves(self):
+        return self._countLeaves(self.root)
+    def _countLeaves(self, node):
+        if not node: return 0
+        if not node.left and not node.right: return 1
+        return self._countLeaves(node.left) + self._countLeaves(node.right)
+    
+    def treeSum(self):
+        return self._treeSum(self.root)
+    def _treeSum(self, node):
+        if not node: return 0
+        return node.data + self._treeSum(node.left) + self._treeSum(node.right)
+    
+    def maxElement(self):
+        return self._maxElement(self.root)
+    def _maxElement(self, node):
+        if node is None:
+            return float('-inf')
+        left_max = self._maxElement(node.left)
+        right_max = self._maxElement(node.right)
+        return max(node.value, left_max, right_max)
 # Demo
 if __name__ == "__main__":
     tree = BinaryTree()
@@ -149,18 +183,26 @@ if __name__ == "__main__":
     print("\nTree After Inserting: ")
     tree.display()
 
-    # Search
-    print("\nSearching For 5...")
-    print("\n",tree.search(5))
+    # # Search
+    # print("\nSearching For 5...")
+    # print("\n",tree.search(5))
 
-    print("\nSearching For 9...")
-    print("\n",tree.search(9))
+    # print("\nSearching For 9...")
+    # print("\n",tree.search(9))
 
-    # Delete
-    print("\nDeleting '2'...")
-    tree.delete(2)
-    print("\nTree After Deleting '2':")
-    tree.display()
+    # # Delete
+    # print("\nDeleting '2'...")
+    # tree.delete(2)
+    # print("\nTree After Deleting '2':")
+    # tree.display()
 
-    print("\nDeleting '10'...")
-    tree.delete(10)
+    # print("\nDeleting '10'...")
+    # tree.delete(10)
+
+    for v in [50, 30, 70, 20, 40, 60, 80]:
+        tree.insert(v)
+
+    print("Height Of The Tree: ",{tree.height()})
+    print("Total Count Of The Leaves From The Tree: ",{tree.countLeaves()})
+    print("Total Node's Data From The Tree: ",{tree.treeSum()})
+    print("Maximum Value Of The Nodes From The Tree: ",{tree.maxElement()})
