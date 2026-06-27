@@ -26,12 +26,12 @@ class BinarySearchTree:
         elif value > root.value:
             if root.right is None:
                 root.right = Node(value)
-        else:
-            self._insert_recursive(root.right, value)
+            else:
+                self._insert_recursive(root.right, value)
     
     def delete(self, value):
         """Delete A Value From The Given Value From The BST"""
-        self.root = self._insert_recursive(self.root, value)
+        self.root = self._delete_recursive(self.root, value)
     
     def _delete_recursive(self, root, value):
         """Recursive Deletion Helper, Returns (Possibly) A New Root Of The Subtree"""
