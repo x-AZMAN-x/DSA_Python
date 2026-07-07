@@ -181,10 +181,10 @@ def tan(num):
     contin(res)
 
 def log(num):
-    res = math.log(num)
-    print(f"The Log Of {num} Is {res}")
-    conversion(res)
-    contin(res)
+        res = math.log(num)
+        print(f"The Log Of {num} Is {res}")
+        conversion(res)
+        contin(res)
 
 def calculator():
     calc = input("Which Calculator Do You Want To Use?(1. Simple Calculator, 2. Scientific Calculator) - ")
