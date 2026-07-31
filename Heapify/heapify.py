@@ -1,24 +1,24 @@
-def heapify(a, n, i):
+def heapify(arr, size, ind):
     """Fix At A Single Potential Violation At Index i, Assuming The Subtrees Rooted At Its Children Are Valid Max-Heaps. This Is The Core Operation - Insert, Extract And build_heap Are All Built On Top Of It."""
-    largest = i
-    l = 2 * i + 1
-    r = 2 * i + 2
+    largest = ind
+    left = 2 * ind + 1
+    right = 2 * ind + 2
 
-    if l < n and a[l] > a[largest]:
-        largest = l
-    if r < n and a[r] > a[largest]:
-        largest = r
+    if left < size and arr[left] > arr[largest]:
+        largest = left
+    if right < size and arr[right] > arr[largest]:
+        largest = right
     
-    if largest == i:
-        print(f"Index {i} (Value {a[i]} Alreadt Beats Both Children) - STOP")
+    if largest == ind:
+        print(f"Index {ind} (Value {arr[ind]} Already Beats Both Children) - STOP")
         return
 
-    print(f"Index {i} (Value{a[i]} Loses To Index {largest}) Value{a[largest]} - SWAP")
-    a[i], a[largest] = a[largest], a[i]
-    heapify(a, n, largest)          # The Violation May Have Moved Further Down, Keep Going
+    print(f"Index {ind} (Value{a[ind]} Loses To Index {largest}) Value{arr[largest]} - SWAP")
+    arr[ind], arr[largest] = arr[largest], arr[ind]
+    heapify(arr, size, largest)          # The Violation May Have Moved Further Down, Keep Going
     
-a = [10, 90, 80, 70, 60, 50, 40, 30, 20]
-n = len(a)
-print("Array Before: ", a)
-heapify(a, n, 0)
-print("Array After: ", a)
+arr = [90, 80, 70, 60, 50, 30, 20, 10]
+size = len(arr)
+print("Array Before: ", arr)
+heapify(arr, size, 0)
+print("Array After: ", arr)
